@@ -1,6 +1,9 @@
-FROM python:3.7
+FROM alpine:latest
 
 MAINTAINER vincentliao <vincentliao@gmail.com>
-RUN pip3 install python-gitlab
 
-CMD ["python3"]
+RUN apk add --no-cache python3
+RUN pip3 install --upgrade pip \
+    && pip3 install python-gitlab
+
+ENTRYPOINT ["python3"]
